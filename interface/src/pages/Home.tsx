@@ -1,6 +1,38 @@
+import type { JSX } from "react";
 import Button from "../components/Button";
+import { Wallet, TrendingUp, List, CreditCard } from "lucide-react";
+
+interface Feature {
+  icon: JSX.Element;
+  title: string;
+  description: string;
+}
 
 const Home = () => {
+  const features: ReadonlyArray<Feature> = [
+    {
+      icon: <Wallet className="w-8 h-8 text-primary-700" />,
+      title: "Controle Financeiro",
+      description:
+        "Monitore suas despesas e receitas em um só lugar, com uma interface intuitiva e fácil de usar.",
+    },
+    {
+      icon: <TrendingUp className="w-8 h-8 text-primary-700" />,
+      title: "Relatórios",
+      description: "Visualize graficamente seus gastos e entenda para onde seu dinheiro está indo.",
+    },
+    {
+      icon: <List className="w-8 h-8 text-primary-700" />,
+      title: "Categorias Personalizadas",
+      description: "Organize suas transações em categorias para melhor análise.",
+    },
+    {
+      icon: <CreditCard className="w-8 h-8 text-primary-700" />,
+      title: "Transações Ilimitadas",
+      description:
+        "Adicione quantas transações quiser e mantenha um histórico completo de suas finanças.",
+    },
+  ];
   return (
     <div className="bg-gray-950 min-h-screen">
       <div className="container-app">
@@ -29,6 +61,18 @@ const Home = () => {
                 Nossa plataforma oferece tudo o que você precisa para manter suas finanças
                 organizadas.
               </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {features.map((feature) => (
+                <div key={feature.title} className="bg-gray-800 p-6 rounder-xl hover:shadow-lg">
+                  <div className="mb-4 bg-primary-500/10 p-3 rounded-full inline-block">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
+                  <p className="text-gray-400">{feature.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
